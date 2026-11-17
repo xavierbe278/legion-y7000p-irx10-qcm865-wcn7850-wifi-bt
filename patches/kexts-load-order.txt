@@ -1,0 +1,17 @@
+# 驱动加载顺序（Kernel > Add 顺序即加载顺序）
+
+AirportWCN7850.kext
+BluetoothWCN7850.kext
+IntelBTPatcher.kext
+BlueToolFixup.kext          ← 必须是补丁版（支持 -btlfxboardid）
+
+# 必需的 ACPI 补丁
+# _OSI  -> XOSI     Find 5F4F5349   Replace 584F5349
+# GPI0._STA -> XSTA Find 145F535441 Replace 155F535441
+#
+# 必需的 NVRAM（Add 与 Delete 都要有）
+# bluetoothExternalDongleFailed     = 00
+# bluetoothInternalControllerInfo   = 0000000000000000000000000000
+#
+# 必需关闭
+# ACPI > Add > SSDT-Disable_Network_RP05.aml   Enabled = false
