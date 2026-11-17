@@ -23,9 +23,21 @@
 
 | 文件 | 用途 |
 |---|---|
+| `kexts/AirportWCN7850.kext` `BluetoothWCN7850.kext` `IntelBTPatcher.kext` `BlueToolFixup.kext` | **我实际在用的四个驱动**（含内置固件），放 EFI/OC/Kexts 即可 | 见下节 |
 | `patches/kexts-load-order.txt` | 四个 kext 的加载顺序 + 必需的 ACPI 补丁 + 必需的 NVRAM 键 |
 | `scripts/install.sh` | 环境自检：硬件是否存在、驱动是否加载、NVRAM 两键、`-btlfxboardid`、`SSDT-Disable_Network_RP05` 状态 |
 | `configs/README.md` | 关键改动汇总（5 条） |
+
+## kexts 目录里的驱动
+
+| kext | 版本 | 来源 | 授权 |
+|---|---|---|---|
+| `AirportWCN7850.kext` | 0.0.2 | [razvanccr/AirportWCN7850](https://github.com/razvanccr/AirportWCN7850) | 见上游 |
+| `BluetoothWCN7850.kext` | 1.0.0 | [razvanccr/BluetoothWCN7850](https://github.com/razvanccr/BluetoothWCN7850) | 见上游 |
+| `IntelBTPatcher.kext` | 2.5.0 | [OpenIntelWireless/IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) | GPL-2.0 |
+| `BlueToolFixup.kext` | 2.7.3 | [acidanthera/BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM) | MIT |
+
+加载顺序：`AirportWCN7850` → `BluetoothWCN7850` → `IntelBTPatcher` → `BlueToolFixup`
 
 > **隐私说明**：本仓库不含任何序列号 / MAC 地址 / Board-id。
 
